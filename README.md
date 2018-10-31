@@ -8,11 +8,6 @@
 
 Babel plugin to rewrite import.meta.url for use in bundles.
 
-Note: the result of this transformation still uses import.meta.url to resolve the
-full URL including hostname which is serving the module.  The purpose of this plugin
-is to avoid breakage due to `import.meta.url` being the incorrect URL after bundling
-is completed.
-
 ## Install babel-plugin-bundled-import-meta
 
 This module requires node.js 8 or above and `@babel/core`.
@@ -53,6 +48,24 @@ Default `process.cwd()`.
 
 This maps source paths to server URL's.  Key's represent local source paths, values
 represent base URL which would be used for the unbundled build.  Default `{}`.
+
+### importStyle
+
+It's necessary to know the full URL of the bundle as loaded by the browser.  The best
+way to determine this is different based on what type of bundle will be used.
+
+Supported styles are: `amd`, `cjs`, `esm`, `iife`, `umd`, `system`.  Default `esm`.
+
+The `esm` import style generates `import.meta.url` to detect the bundled URL.  This
+is not compatible with webpack so use another method.  If anyone knows of a 'best'
+option for use with webpack please open an issue or PR.
+
+When bundling with rollup you should generally use `esm` here.  For any output format
+other than `esm` rollup will translate to the correct output.  The only exception is
+if rollup is generating an `esm` bundle for targets that do not support
+`import.meta.url`.  If you are using `import.meta.url` in your code but must maintain
+compatibility with browsers that do not support this it is probably best to have rollup
+generate a different bundle format.
 
 ## Running tests
 

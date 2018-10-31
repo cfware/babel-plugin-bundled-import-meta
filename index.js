@@ -4,6 +4,15 @@ const path = require('path');
 const template = require('@babel/template').default;
 const inherits = require('@babel/plugin-syntax-import-meta').default;
 
+const importStyles = {
+	amd: "new URL((typeof process !== 'undefined' && process.versions && process.versions.node ? 'file:' : '') + module.uri).href",
+	cjs: "new (typeof URL !== 'undefined' ? URL : require('ur'+'l').URL)((process.browser ? '' : 'file:') + __filename, process.browser && document.baseURI).href",
+	esm: 'import.meta.url',
+	iife: "typeof document !== 'undefined' ? document.currentScript && document.currentScript.src || document.baseURI : new (typeof URL !== 'undefined' ? URL : require('ur'+'l').URL)('file:' + __filename).href",
+	umd: "typeof document !== 'undefined' ? document.currentScript && document.currentScript.src || document.baseURI : new (typeof URL !== 'undefined' ? URL : require('ur'+'l').URL)('file:' + __filename).href",
+	system: 'module.meta.url'
+};
+
 module.exports = () => ({
 	inherits,
 	visitor: {
@@ -62,7 +71,7 @@ module.exports = () => ({
 			}
 
 			progPath.node.body.unshift(template.ast(`const ${metaId} = {
-				url: new URL('${relativeURL}', import.meta.url).toString()
+				url: new URL('${relativeURL}', ${importStyles[opts.importStyle] || importStyles.esm}).href
 			};`, {plugins: ['importMeta']}));
 
 			for (const meta of metas) {

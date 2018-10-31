@@ -53,5 +53,16 @@
 			"*.js",
 			"!test.js"
 		]
+	},
+	"xo": {
+		"rules": {
+			"quotes": [
+				"error",
+				"single",
+				{
+					"avoidEscape": true
+				}
+			]
+		}
 	}
 }
