@@ -61,13 +61,13 @@ module.exports = () => ({
 			}
 
 			if (typeof relativeURL === 'undefined') {
-				const cwd = opts.cwd ? path.resolve(opts.cwd) : process.cwd();
+				const bundleDir = opts.bundleDir ? path.resolve(opts.bundleDir) : process.cwd();
 
-				if (!sourceFileName.startsWith(cwd)) {
-					throw new Error(`${sourceFileName} does not match any mappings or cwd.`);
+				if (!sourceFileName.startsWith(bundleDir)) {
+					throw new Error(`${sourceFileName} does not match any mappings or bundleDir.`);
 				}
 
-				relativeURL = sourceFileName.replace(cwd, '.');
+				relativeURL = sourceFileName.replace(bundleDir, '.');
 			}
 
 			progPath.node.body.unshift(template.ast(`const ${metaId} = {

@@ -7,11 +7,11 @@ const parentDirFile = path.resolve(__dirname, '..', 'file.js');
 const subDir = path.resolve(__dirname, 'testing');
 const subDirFile = path.resolve(subDir, 'file.js');
 
-function babelTest(t, {filename, source, result, mappings, cwd, importStyle, expectError}) {
+function babelTest(t, {filename, source, result, mappings, bundleDir, importStyle, expectError}) {
 	const opts = {
 		filename: filename || path.join(__dirname, 'file.js'),
 		plugins: [
-			[plugin, {mappings, cwd, importStyle}]
+			[plugin, {mappings, bundleDir, importStyle}]
 		],
 		compact: true
 	};
@@ -39,11 +39,11 @@ test('in cwd', babelTest, {
 	}
 });
 
-test('in custom cwd', babelTest, {
+test('in custom bundleDir', babelTest, {
 	filename: 'html/file.js',
 	source: 'console.log(import.meta.url);',
 	result: "const importMeta={url:new URL('./file.js',import.meta.url).href};console.log(importMeta.url);",
-	cwd: 'html',
+	bundleDir: 'html',
 	mappings: {
 		[path.resolve(__dirname, 'fake-dir')]: '/testing'
 	}
@@ -74,7 +74,7 @@ test('in parent dir', babelTest, {
 	source: 'console.log(import.meta.url);',
 	expectError: {
 		instanceOf: Error,
-		message: `${parentDirFile} does not match any mappings or cwd.`
+		message: `${parentDirFile} does not match any mappings or bundleDir.`
 	}
 });
 
