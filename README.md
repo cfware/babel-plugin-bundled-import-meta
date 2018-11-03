@@ -100,3 +100,4 @@ This module is based on code found in [polymer-build].
 [downloads-url]: https://npmjs.org/package/babel-plugin-bundled-import-meta
 [license-image]: https://img.shields.io/npm/l/babel-plugin-bundled-import-meta.svg
 [polymer-build]: https://github.com/Polymer/tools/blob/fdc9e5472674c63435e8188fdc00b342184ce8f3/packages/build/src/babel-plugin-import-meta.ts
+[rollup-demo]: https://github.com/cfware/babel-plugin-bundled-import-meta/tree/master/rollup-demo
