@@ -29,25 +29,33 @@ Add `bundled-import-meta` to `plugins` in your babel settings.
 			"mappings": {
 				"node_modules": "/assets"
 			},
-			"cwd": "html"
+			"bundleDir": "html"
 		}]
 	]
 }
 ```
 
-This example will assume that `html/` will be served at the root `/` URL with
+This example will assume that `html/` will directly contain the bundled JavaScript.
 `node_modules/` served from `/assets`.  Any use of `import.meta` outside these
 two folders will throw an exception.
 
-### cwd
+### bundleDir
 
-If no mappings match it is assumed that `cwd` is mapped to the root `/` URL.
+If no mappings match it is assumed that `bundleDir` is served from the same directory
+as the output bundle.  In the example where bundleDir is set to `html` it is assumed
+that assets in `html/components` will be published in `./components` relative to the
+bundled JavaScript.
+
 Default `process.cwd()`.
 
 ### mappings
 
 This maps source paths to server URL's.  Key's represent local source paths, values
-represent base URL which would be used for the unbundled build.  Default `{}`.
+represent base URL which would be used for the unbundled build.  Value URL's can be
+relative or absolute.  Relative URL's will be resolved at runtime using the bundle
+URL as the base URL.
+
+Default `{}`.
 
 ### importStyle
 
@@ -60,12 +68,15 @@ The `esm` import style generates `import.meta.url` to detect the bundled URL.  T
 is not compatible with webpack so use another method.  If anyone knows of a 'best'
 option for use with webpack please open an issue or PR.
 
-When bundling with rollup you should generally use `esm` here.  For any output format
-other than `esm` rollup will translate to the correct output.  The only exception is
+When bundling with rollup you should generally use `esm` here.  The only exception is
 if rollup is generating an `esm` bundle for targets that do not support
 `import.meta.url`.  If you are using `import.meta.url` in your code but must maintain
 compatibility with browsers that do not support this it is probably best to have rollup
 generate a different bundle format.
+
+## Example
+
+See [rollup-demo] for a mock package showing use of this plugin with rollup.
 
 ## Running tests
 

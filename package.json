@@ -4,7 +4,7 @@
 	"description": "Babel plugin to rewrite import.meta for bundled usage",
 	"main": "index.js",
 	"scripts": {
-		"test": "xo && nyc ava -s"
+		"test": "xo && nyc ava"
 	},
 	"engines": {
 		"node": ">=8"
@@ -12,14 +12,14 @@
 	"author": "Corey Farrell",
 	"license": "BSD-3-Clause",
 	"files": [
-		"index.js",
-		"fixtures"
+		"index.js"
 	],
 	"keywords": [
 		"babel",
 		"esm",
 		"browser",
-		"import.meta"
+		"import.meta.url",
+		"rollup"
 	],
 	"repository": {
 		"type": "git",
@@ -48,13 +48,10 @@
 		"lines": 100,
 		"statements": 100,
 		"functions": 100,
-		"branches": 100,
-		"include": [
-			"*.js",
-			"!test.js"
-		]
+		"branches": 100
 	},
 	"xo": {
+		"ignore": "rollup-demo/**",
 		"rules": {
 			"quotes": [
 				"error",

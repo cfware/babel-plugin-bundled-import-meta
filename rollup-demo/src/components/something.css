@@ -1,0 +1,11 @@
+body {
+	background: red;
+}
+
+.success {
+	display: block!important;
+}
+
+.failure {
+	display: none;
+}

@@ -67,7 +67,7 @@ module.exports = () => ({
 					throw new Error(`${sourceFileName} does not match any mappings or cwd.`);
 				}
 
-				relativeURL = sourceFileName.replace(cwd, '');
+				relativeURL = sourceFileName.replace(cwd, '.');
 			}
 
 			progPath.node.body.unshift(template.ast(`const ${metaId} = {
