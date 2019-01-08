@@ -70,6 +70,11 @@ module.exports = () => ({
 				relativeURL = sourceFileName.replace(bundleDir, '.');
 			}
 
+			/* istanbul ignore next */
+			if (path.sep === path.win32.sep) {
+				relativeURL = relativeURL.split(path.sep).join(path.posix.sep);
+			}
+
 			progPath.node.body.unshift(template.ast(`const ${metaId} = {
 				url: new URL('${relativeURL}', ${importStyles[opts.importStyle] || importStyles.esm}).href
 			};`, {plugins: ['importMeta']}));
