@@ -15,8 +15,8 @@
     "babel-plugin-bundled-import-meta": "file:..",
     "gulp": "^4.0.0",
     "pump": "^3.0.0",
-    "rollup": "^0.66.6",
+    "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.0.3",
-    "vinyl-rollup": "^0.1.0"
+    "vinyl-rollup": "^0.4.1"
   }
 }
