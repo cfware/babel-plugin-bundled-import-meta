@@ -40,7 +40,7 @@
 		"@babel/core": "^7.0.0",
 		"ava": "^1.0.0-rc.1",
 		"nyc": "^13.1.0",
-		"xo": "^0.23.0"
+		"xo": "^0.24.0"
 	},
 	"nyc": {
 		"check-coverage": true,
