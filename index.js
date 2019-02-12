@@ -16,10 +16,10 @@ const importStyles = {
 module.exports = () => ({
 	inherits,
 	visitor: {
-		Program(progPath, {opts}) {
+		Program(progPath, {opts, file}) {
 			const metas = [];
 			const identifiers = new Set();
-			const {sourceFileName} = progPath.hub.file.opts.parserOpts;
+			const {sourceFileName} = file.opts.parserOpts;
 
 			progPath.traverse({
 				MetaProperty(path) {
