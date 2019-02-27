@@ -4,6 +4,7 @@
 	"description": "Babel plugin to rewrite import.meta for bundled usage",
 	"main": "index.js",
 	"scripts": {
+		"release": "standard-version --sign",
 		"test": "xo && nyc ava"
 	},
 	"engines": {
@@ -40,6 +41,7 @@
 		"@babel/core": "^7.0.0",
 		"ava": "^1.0.0-rc.1",
 		"nyc": "^13.1.0",
+		"standard-version": "^5.0.0",
 		"xo": "^0.24.0"
 	},
 	"nyc": {
