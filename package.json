@@ -31,17 +31,17 @@
 	},
 	"homepage": "https://github.com/cfware/babel-plugin-bundled-import-meta#readme",
 	"dependencies": {
-		"@babel/plugin-syntax-import-meta": "^7.0.0",
-		"@babel/template": "^7.0.0"
+		"@babel/plugin-syntax-import-meta": "^7.2.0",
+		"@babel/template": "^7.2.2"
 	},
 	"peerDependencies": {
-		"@babel/core": "^7.0.0"
+		"@babel/core": "^7.3.4"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.0.0",
-		"ava": "^1.0.0-rc.1",
-		"nyc": "^13.1.0",
-		"standard-version": "^5.0.0",
+		"@babel/core": "^7.3.4",
+		"ava": "^1.2.1",
+		"nyc": "^13.3.0",
+		"standard-version": "^5.0.1",
 		"xo": "^0.24.0"
 	},
 	"nyc": {
