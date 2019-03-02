@@ -90,7 +90,7 @@ test('without import.meta', babelTest, {
 
 test('importStyle amd', babelTest, {
 	source: 'console.log(import.meta.url);',
-	result: "const importMeta={url:new URL('./file.js',new URL((typeof process!=='undefined'&&process.versions&&process.versions.node?'file:':'')+module.uri).href).href};console.log(importMeta.url);",
+	result: "const importMeta={url:new URL('./file.js',new URL(module.uri).href).href};console.log(importMeta.url);",
 	mappings: {
 		[path.resolve(__dirname, 'fake-dir')]: '/testing'
 	},
@@ -99,7 +99,7 @@ test('importStyle amd', babelTest, {
 
 test('importStyle cjs', babelTest, {
 	source: 'console.log(import.meta.url);',
-	result: "const importMeta={url:new URL('./file.js',new(typeof URL!=='undefined'?URL:require('ur'+'l').URL)((process.browser?'':'file:')+__filename,process.browser&&document.baseURI).href).href};console.log(importMeta.url);",
+	result: "const importMeta={url:new URL('./file.js',new URL(__filename,document.baseURI).href).href};console.log(importMeta.url);",
 	importStyle: 'cjs'
 });
 
@@ -111,13 +111,19 @@ test('importStyle esm', babelTest, {
 
 test('importStyle iife', babelTest, {
 	source: 'console.log(import.meta.url);',
-	result: "const importMeta={url:new URL('./file.js',typeof document!=='undefined'?document.currentScript&&document.currentScript.src||document.baseURI:new(typeof URL!=='undefined'?URL:require('ur'+'l').URL)('file:'+__filename).href).href};console.log(importMeta.url);",
+	result: "const importMeta={url:new URL('./file.js',document.currentScript&&document.currentScript.src||document.baseURI).href};console.log(importMeta.url);",
 	importStyle: 'iife'
+});
+
+test('importStyle baseURI', babelTest, {
+	source: 'console.log(import.meta.url);',
+	result: "const importMeta={url:new URL('./file.js',document.baseURI).href};console.log(importMeta.url);",
+	importStyle: 'baseURI'
 });
 
 test('importStyle umd', babelTest, {
 	source: 'console.log(import.meta.url);',
-	result: "const importMeta={url:new URL('./file.js',typeof document!=='undefined'?document.currentScript&&document.currentScript.src||document.baseURI:new(typeof URL!=='undefined'?URL:require('ur'+'l').URL)('file:'+__filename).href).href};console.log(importMeta.url);",
+	result: "const importMeta={url:new URL('./file.js',document.currentScript&&document.currentScript.src||document.baseURI).href};console.log(importMeta.url);",
 	importStyle: 'umd'
 });
 
