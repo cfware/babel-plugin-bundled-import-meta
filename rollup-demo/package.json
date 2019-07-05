@@ -17,6 +17,6 @@
     "pump": "^3.0.0",
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.0.3",
-    "vinyl-rollup": "^0.5.0"
+    "vinyl-rollup": "^0.6.0"
   }
 }
