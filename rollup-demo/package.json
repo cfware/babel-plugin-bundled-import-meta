@@ -10,13 +10,12 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/register": "^7.0.0",
     "babel-plugin-bundled-import-meta": "file:..",
+    "esm": "^3.2.25",
     "gulp": "^4.0.0",
-    "pump": "^3.0.0",
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.0.3",
-    "vinyl-rollup": "^0.5.0"
+    "stream.pipeline-shim": "^1.1.0",
+    "vinyl-rollup": "^0.6.0"
   }
 }
