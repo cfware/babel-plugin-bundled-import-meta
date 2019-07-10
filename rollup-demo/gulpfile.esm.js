@@ -1,10 +1,16 @@
 import gulp from 'gulp';
-import pump from 'pump';
+import pipeline from 'stream.pipeline-shim';
 import rollup from 'vinyl-rollup';
 import babel from 'rollup-plugin-babel';
 
+const printError = error => {
+	if (error) {
+		console.error(error);
+	}
+};
+
 function bundle() {
-	return pump(
+	return pipeline(
 		rollup({
 			rollup: {
 				input: 'src/main/main.js',
@@ -36,14 +42,16 @@ function bundle() {
 				]
 			}
 		}),
-		gulp.dest('dist')
+		gulp.dest('dist'),
+		printError
 	);
 }
 
 function copy() {
-	return pump(
+	return pipeline(
 		gulp.src(['src/**', '!src/**/*.js']),
-		gulp.dest('dist')
+		gulp.dest('dist'),
+		printError
 	);
 }
 
