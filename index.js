@@ -65,7 +65,7 @@ module.exports = () => ({
 				const bundleDir = opts.bundleDir ? path.resolve(opts.bundleDir) : process.cwd();
 
 				if (!sourceFileName.startsWith(bundleDir)) {
-					throw new Error(`${sourceFileName} does not match any mappings or bundleDir.`);
+					throw new Error('Does not match any mappings or bundleDir.');
 				}
 
 				relativeURL = sourceFileName.replace(bundleDir, '.');

@@ -74,7 +74,7 @@ test('in parent dir', babelTest, {
 	source: 'console.log(import.meta.url);',
 	expectError: {
 		instanceOf: Error,
-		message: `${parentDirFile} does not match any mappings or bundleDir.`
+		message: `${parentDirFile}: Does not match any mappings or bundleDir.`
 	}
 });
 
