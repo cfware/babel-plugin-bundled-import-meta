@@ -1,6 +1,6 @@
 {
 	"name": "babel-plugin-bundled-import-meta",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "Babel plugin to rewrite import.meta for bundled usage",
 	"scripts": {
 		"release": "standard-version --sign",

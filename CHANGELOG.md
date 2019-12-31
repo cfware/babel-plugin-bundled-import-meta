@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/cfware/babel-plugin-bundled-import-meta/compare/v0.3.1...v0.3.2) (2019-12-31)
+
+
+### Bug Fixes
+
+* Remove filename from exception, update dependencies ([f148405](https://github.com/cfware/babel-plugin-bundled-import-meta/commit/f148405797161394b8f5bd3e7b9040c4d62c6d3d))
+
 ### [0.3.1](https://github.com/cfware/babel-plugin-bundled-import-meta/compare/v0.3.0...v0.3.1) (2019-06-07)
 
 
