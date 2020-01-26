@@ -4,10 +4,11 @@
 	"description": "Babel plugin to rewrite import.meta for bundled usage",
 	"scripts": {
 		"release": "standard-version --sign",
-		"test": "xo && nyc ava"
+		"pretest": "xo",
+		"test": "tap"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=10.13.0"
 	},
 	"author": "Corey Farrell",
 	"license": "BSD-3-Clause",
@@ -35,10 +36,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.0",
-		"@cfware/nyc": "^0.6.0",
-		"ava": "^2.4.0",
-		"nyc": "^15.0.0",
 		"standard-version": "^7.0.0",
+		"tap": "^14.10.6",
 		"xo": "^0.25.3"
 	},
 	"xo": {

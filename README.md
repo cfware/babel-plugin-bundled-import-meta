@@ -10,7 +10,7 @@ Babel plugin to rewrite import.meta.url for use in bundles.
 
 ## Install babel-plugin-bundled-import-meta
 
-This module requires node.js 8 or above and `@babel/core`.
+This module requires node.js 10 or above and `@babel/core`.
 
 ```sh
 npm i babel-plugin-bundled-import-meta
@@ -77,15 +77,6 @@ generate a different bundle format.
 ## Example
 
 See [rollup-demo] for a mock package showing use of this plugin with rollup.
-
-## Running tests
-
-Tests are provided by xo and ava.
-
-```sh
-npm install
-npm test
-```
 
 ## Attribution
 

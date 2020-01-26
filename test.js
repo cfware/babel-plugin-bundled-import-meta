@@ -1,13 +1,13 @@
-import path from 'path';
-import test from 'ava';
-import {transform} from '@babel/core';
-import plugin from '.';
+const path = require('path');
+const t = require('tap');
+const {transform} = require('@babel/core');
+const plugin = require('.');
 
 const parentDirFile = path.resolve(__dirname, '..', 'file.js');
 const subDir = path.resolve(__dirname, 'testing');
 const subDirFile = path.resolve(subDir, 'file.js');
 
-function babelTest(t, {filename, source, result, mappings, bundleDir, importStyle, expectError}) {
+async function babelTest(t, {filename, source, result, mappings, bundleDir, importStyle, expectError}) {
 	const opts = {
 		filename: filename || path.join(__dirname, 'file.js'),
 		plugins: [
@@ -23,12 +23,14 @@ function babelTest(t, {filename, source, result, mappings, bundleDir, importStyl
 
 	const {code} = transform(source, opts);
 
-	t.is(code, result);
+	t.equal(code, result);
 }
 
-test('exports', t => {
-	t.is(typeof plugin, 'function');
-	t.is(typeof plugin(), 'object');
+const test = (name, helper, ...args) => t.test(name, t => helper(t, ...args));
+
+t.test('exports', async t => {
+	t.type(plugin, 'function');
+	t.type(plugin(), 'object');
 });
 
 test('in cwd', babelTest, {
@@ -72,10 +74,7 @@ test('in relative mapped path', babelTest, {
 test('in parent dir', babelTest, {
 	filename: parentDirFile,
 	source: 'console.log(import.meta.url);',
-	expectError: {
-		instanceOf: Error,
-		message: `${parentDirFile}: Does not match any mappings or bundleDir.`
-	}
+	expectError: new Error(`${parentDirFile}: Does not match any mappings or bundleDir.`)
 });
 
 test('already has importMeta', babelTest, {
