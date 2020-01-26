@@ -16,6 +16,6 @@
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.0.3",
     "stream.pipeline-shim": "^1.1.0",
-    "vinyl-rollup": "^0.6.0"
+    "vinyl-rollup": "^0.7.0"
   }
 }
