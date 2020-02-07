@@ -41,8 +41,8 @@
 		"xo": "^0.25.3"
 	},
 	"xo": {
-		"ignore": "rollup-demo/**",
 		"rules": {
+			"import/order": 0,
 			"quotes": [
 				"error",
 				"single",
