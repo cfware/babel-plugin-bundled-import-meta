@@ -18,14 +18,14 @@ npm i babel-plugin-bundled-import-meta
 
 ## Usage
 
-Add `bundled-import-meta` to `plugins` in your babel settings.
+Add `babel-plugin-bundled-import-meta` to `plugins` in your babel settings.
 
 ## Settings
 
 ```json
 {
 	"plugins": [
-		["bundled-import-meta", {
+		["babel-plugin-bundled-import-meta", {
 			"mappings": {
 				"node_modules": "/assets"
 			},
@@ -73,10 +73,6 @@ if rollup is generating an `esm` bundle for targets that do not support
 `import.meta.url`.  If you are using `import.meta.url` in your code but must maintain
 compatibility with browsers that do not support this it is probably best to have rollup
 generate a different bundle format.
-
-## Example
-
-See [rollup-demo] for a mock package showing use of this plugin with rollup.
 
 ## Attribution
 
