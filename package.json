@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.0",
-		"standard-version": "^7.0.0",
+		"standard-version": "^8.0.0",
 		"tap": "^14.10.6",
 		"xo": "^0.25.3"
 	},
