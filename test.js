@@ -131,3 +131,10 @@ test('importStyle system', babelTest, {
 	result: "const importMeta={url:new URL('./file.js',module.meta.url).href};console.log(importMeta.url);",
 	importStyle: 'system'
 });
+
+test('importStyle location', babelTest, {
+	source: 'console.log(import.meta.url);',
+	result: "const importMeta={url:new URL('./file.js',self.location.href).href};console.log(importMeta.url);",
+	importStyle: 'location'
+});
+
