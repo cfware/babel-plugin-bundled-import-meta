@@ -11,7 +11,8 @@ const importStyles = {
 	iife: 'document.currentScript && document.currentScript.src || document.baseURI',
 	umd: 'document.currentScript && document.currentScript.src || document.baseURI',
 	system: 'module.meta.url',
-	baseURI: 'document.baseURI'
+	baseURI: 'document.baseURI',
+	location: 'self.location.href'
 };
 
 module.exports = () => ({
